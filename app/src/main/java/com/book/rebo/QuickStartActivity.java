@@ -64,7 +64,7 @@ public class QuickStartActivity extends AppCompatActivity {
 	// 用户自定义signInIntent请求码
 	// User-defined signInIntent request code
 	private static final int REQUEST_CODE_SIGN_IN = 1000;
-
+	Vector<Book> book = new Vector<>();
 	// 用户自定义日志标记
 	// User-defined log mark
 	private static final String TAG = "Account";
@@ -95,7 +95,7 @@ public class QuickStartActivity extends AppCompatActivity {
 
 				if(!isAuthor.isEmpty()) {
 
-					Intent directHome = new Intent(getApplicationContext(), HomeActivity.class);
+					Intent directHome = new Intent(getApplicationContext(), MainActivity.class);
 					startActivity(directHome);
 				}
 			}
@@ -282,7 +282,7 @@ public class QuickStartActivity extends AppCompatActivity {
 				if(NIM.getText().toString().equalsIgnoreCase(data.getUserName()) && password.getText().toString().equals(data.getPassword())){
 //			showLog("Berhasil login");
 					System.out.println("berhasil");
-					Intent login = new Intent(getApplicationContext(),HomeActivity.class);
+					Intent login = new Intent(getApplicationContext(),MainActivity.class);
 					Toast.makeText(QuickStartActivity.this,"Welcome to ReBo",Toast.LENGTH_SHORT).show();
 					flag = true;
 //					Already login
@@ -293,6 +293,14 @@ public class QuickStartActivity extends AppCompatActivity {
 					String json2 = gson2.toJson(userList);
 					editor.putString("Data",json2);
 					editor.apply();
+					SharedPreferences recent = getSharedPreferences("RECENTLY", Context.MODE_PRIVATE);
+					SharedPreferences.Editor editorRecent = prefs.edit();
+					Gson gsonRecent = new Gson();
+					book.add(new Book("mda","null","d",0,"a","a"));
+					String jsonRecent = gsonRecent.toJson(book);
+					editorRecent.putString("DATARECENTLY",jsonRecent);
+					editorRecent.apply();
+
 					startActivity(login);
 				}
 			}

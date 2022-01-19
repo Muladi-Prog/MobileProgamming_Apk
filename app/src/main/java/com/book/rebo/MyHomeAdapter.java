@@ -1,6 +1,7 @@
 package com.book.rebo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,9 +51,14 @@ public class MyHomeAdapter extends FirebaseRecyclerAdapter<Book,MyHomeAdapter.Ho
         holder.icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                getInfoBook(model.getImage_url(),model.getName(),model.getIsi(),view);
             }
         });
+        if(model.getIsFavourite() == 1){
+            holder.unLove.setBackgroundResource(R.drawable.ic_baseline_favorite_24);
+        }else{
+            holder.unLove.setBackgroundResource(R.drawable.ic_baseline_favorite_border_24);
+        }
         holder.unLove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -125,5 +131,15 @@ public class MyHomeAdapter extends FirebaseRecyclerAdapter<Book,MyHomeAdapter.Ho
             System.out.println("asahsu");
         }
     }
+
+    public void getInfoBook(String image_url,String name,String isi,View view){
+        Intent i = new Intent(view.getContext(),BookDetailActivity.class);
+        i.putExtra("image_url",image_url);
+        i.putExtra("name",name);
+        i.putExtra("isi",isi);
+        view.getContext().startActivity(i);
+        System.out.println("startdetail");
+    }
+
 
 }

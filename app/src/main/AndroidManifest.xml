@@ -23,6 +23,8 @@
 
         <activity android:name=".SignInActivity"></activity>
         <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".BookDetailActivity"/>
 <!--        <meta-data-->
 <!--            android:name="com.huawei.hms.client.channel.androidMarket"-->
 <!--            android:value="false"/>-->
