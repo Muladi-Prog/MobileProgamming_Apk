@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "218325973382",
+    "project_id": "rebo-c9384",
+    "storage_bucket": "rebo-c9384.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:218325973382:android:d50a4c9ad6d95b3a1b1407",
+        "android_client_info": {
+          "package_name": "com.book.rebo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "218325973382-4rppuu1qqqr9j26kbcldas4t8lag43pm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.book.rebo",
+            "certificate_hash": "e907f934bfa8ec4c5a9bf723d50187201438347c"
+          }
+        },
+        {
+          "client_id": "218325973382-b1o8mq80gcr9ckesf9g4e4ruepf7fbub.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAzSqlq2KXQtJhVxPXhuS-a3Yg20G5DN4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "218325973382-b1o8mq80gcr9ckesf9g4e4ruepf7fbub.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
