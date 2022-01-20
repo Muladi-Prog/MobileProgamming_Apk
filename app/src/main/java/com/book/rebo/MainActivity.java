@@ -40,30 +40,31 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getDrawer();
-//        SharedPreferences prefs = getSharedPreferences("RECENTLY", Context.MODE_PRIVATE);
-//        bottomNavigationView = findViewById(R.id.bottomNavigationView);
-//        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                Fragment selectedFragment = null;
-//                switch (item.getItemId()){
-//                    case R.id.home:
-//                        selectedFragment = new HomeFragment();
-//                        break;
-//                    case R.id.favourite:
-//                        selectedFragment = new FavouriteFragment();
-//                        break;
-//                    case R.id.genre:
-//                        selectedFragment = new GenreFragment();
-//                        break;
-//                    case R.id.recent:
-//                        selectedFragment = new Recent_Fragment();
-//                        break;
-//                }
-//                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment,selectedFragment).commit();
-//                return true;
-//            }
-//        });
+        SharedPreferences prefs = getSharedPreferences("RECENTLY", Context.MODE_PRIVATE);
+        SharedPreferences prefs2 = getSharedPreferences("BOOK", Context.MODE_PRIVATE);
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Fragment selectedFragment = null;
+                switch (item.getItemId()){
+                    case R.id.home:
+                        selectedFragment = new HomeFragment();
+                        break;
+                    case R.id.favourite:
+                        selectedFragment = new FavouriteFragment();
+                        break;
+                    case R.id.genre:
+                        selectedFragment = new GenreFragment();
+                        break;
+                    case R.id.recent:
+                        selectedFragment = new Recent_Fragment();
+                        break;
+                }
+                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment,selectedFragment).commit();
+                return true;
+            }
+        });
 
     }
 
@@ -88,11 +89,22 @@ public class MainActivity extends AppCompatActivity {
 //                delete all shared pref
                         SharedPreferences prefs = getSharedPreferences("isAuthourized", Context.MODE_PRIVATE);
                         prefs.edit().remove("Data").commit();
+                        SharedPreferences prefs1 = getSharedPreferences("RECENTLY", Context.MODE_PRIVATE);
+                        prefs1.edit().remove("DATARECENTLY").commit();
                         System.out.println("Logout Berhasil");
                         Intent backToLogin = new Intent(getApplicationContext(),QuickStartActivity.class);
                         Toast.makeText(MainActivity.this,"Log out Success!",Toast.LENGTH_SHORT).show();
                         startActivity(backToLogin);
                         return true;
+
+                    case R.id.nav_account:
+                            Intent gotoAcc = new Intent(getApplicationContext(),MyAccountActivity.class);
+                            startActivity(gotoAcc);
+
+                        break;
+                    case R.id.nav_aboutus:
+
+                        break;
                 }
                 return false;
             }

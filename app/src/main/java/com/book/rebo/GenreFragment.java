@@ -2,11 +2,17 @@ package com.book.rebo;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toolbar;
+
+import com.google.android.material.tabs.TabLayout;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -54,11 +60,23 @@ public class GenreFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_genre, container, false);
+        View view = inflater.inflate(R.layout.fragment_genre, container, false);
+
+        tabLayout = view.findViewById(R.id.tabLayout);
+        viewPager = view.findViewById(R.id.viewPager);
+
+        GenreAdapter genreAdapter = new GenreAdapter(getChildFragmentManager(), FragmentPagerAdapter.BEHAVIOR_SET_USER_VISIBLE_HINT);
+        genreAdapter.addFragment(new FabelFragment(),"Fabel");
+        genreAdapter.addFragment(new LegendaFragment(),"Legenda");
+        genreAdapter.addFragment(new CeritaRakyatFragment(),"Cerita Rakyat");
+        viewPager.setAdapter(genreAdapter);
+        tabLayout.setupWithViewPager(viewPager);
+
+        return view;
     }
 }

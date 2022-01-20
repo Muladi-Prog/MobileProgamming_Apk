@@ -3,32 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeFragment"
-    android:background="@drawable/background_gradient"
-    >
-
-
+    tools:context=".LegendaFragment">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/userName"
-            android:textSize="40dp"
-            />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Recently Added"
-            android:textSize="30dp"
-            />
+
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/recyclerHome"
+            android:id="@+id/recyclerCerita"
 
             tools:ignore="MissingConstraints" />
 

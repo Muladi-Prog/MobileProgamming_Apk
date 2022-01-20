@@ -78,7 +78,12 @@ public class QuickStartActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_huawei_quickstart);
-
+		SharedPreferences recent = getSharedPreferences("RECENTLY", Context.MODE_PRIVATE);
+		SharedPreferences.Editor editor = recent.edit();
+		Gson gsonRecent = new Gson();
+		String jsonRecent = gsonRecent.toJson(userList);
+		editor.putString("DATARECENTLY",jsonRecent);
+		editor.apply();
 
 			SharedPreferences sharedPreferences = getSharedPreferences("isAuthourized", Context.MODE_PRIVATE);
 			if(sharedPreferences.getAll().isEmpty()){
@@ -92,8 +97,8 @@ public class QuickStartActivity extends AppCompatActivity {
 				Type type = new TypeToken<Vector<User>>(){}.getType();
 
 				isAuthor = gson.fromJson(json,type);
-
-				if(!isAuthor.isEmpty()) {
+				System.out.println(isAuthor);
+				if(isAuthor!=null) {
 
 					Intent directHome = new Intent(getApplicationContext(), MainActivity.class);
 					startActivity(directHome);
@@ -107,6 +112,8 @@ public class QuickStartActivity extends AppCompatActivity {
 			@Override
 			public void onClick(View v) {
 				silentSignInByHwId();
+				Intent login = new Intent(getApplicationContext(),MainActivity.class);
+				startActivity(login);
 			}
 		});
 
@@ -121,19 +128,19 @@ public class QuickStartActivity extends AppCompatActivity {
 
 //		Sign in button
 		sign_inAccount(signIn);
-		findViewById(R.id.HuaweiIdSignOutButton).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				signOut();
-			}
-		});
+//		findViewById(R.id.HuaweiIdSignOutButton).setOnClickListener(new View.OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//				signOut();
+//			}
+//		});
 
-		findViewById(R.id.HuaweiIdCancelAuthButton).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				cancelAuthorization();
-			}
-		});
+//		findViewById(R.id.HuaweiIdCancelAuthButton).setOnClickListener(new View.OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//				cancelAuthorization();
+//			}
+//		});
 //		logTextView = (TextView) findViewById(R.id.LogText);
 	}
 	public void sign_inAccount(TextView signIn){
@@ -202,6 +209,7 @@ public class QuickStartActivity extends AppCompatActivity {
 				// Silent sign in is successful, the returned account object AuthAccount is processed,account information is obtained and processed
 				showLog("silent sign in success");
 				dealWithResultOfSignIn(authAccount);
+
 			}
 		});
 		task.addOnFailureListener(new OnFailureListener() {
@@ -237,7 +245,13 @@ public class QuickStartActivity extends AppCompatActivity {
 				"email:" + authAccount.getEmail() + "openid:" + authAccount.getOpenId() + "unionid:" + authAccount.getUnionId());
 		// TODO 获取用户信息后业务逻辑
 		// TODO Business logic after obtaining user information
-
+		SharedPreferences prefs = getSharedPreferences("isAuthourized", Context.MODE_PRIVATE);
+		SharedPreferences.Editor editor = prefs.edit();
+		Gson gson2 = new Gson();
+		userList.add(new User(authAccount.getDisplayName(),"null","null","null","null","null"));
+		String json2 = gson2.toJson(userList);
+		editor.putString("Data",json2);
+		editor.apply();
 	}
 
 	@Override
@@ -293,13 +307,7 @@ public class QuickStartActivity extends AppCompatActivity {
 					String json2 = gson2.toJson(userList);
 					editor.putString("Data",json2);
 					editor.apply();
-					SharedPreferences recent = getSharedPreferences("RECENTLY", Context.MODE_PRIVATE);
-					SharedPreferences.Editor editorRecent = prefs.edit();
-					Gson gsonRecent = new Gson();
-					book.add(new Book("mda","null","d",0,"a","a"));
-					String jsonRecent = gsonRecent.toJson(book);
-					editorRecent.putString("DATARECENTLY",jsonRecent);
-					editorRecent.apply();
+
 
 					startActivity(login);
 				}

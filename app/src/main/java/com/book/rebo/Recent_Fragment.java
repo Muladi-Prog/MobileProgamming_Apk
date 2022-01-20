@@ -1,6 +1,7 @@
 package com.book.rebo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -63,34 +65,87 @@ public class Recent_Fragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-    TextView one,two,three;
+    Button one,two,three;
     Vector<Book> book = new Vector<>();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_recent_, container, false);
-        one = (TextView)view.findViewById(R.id.nameRecent1);
-        two = (TextView)view.findViewById(R.id.nameRecent2);
-        three = (TextView)view.findViewById(R.id.nameRecent3);
+        one = (Button)view.findViewById(R.id.nameRecent1);
+        two = (Button)view.findViewById(R.id.nameRecent2);
+        three = (Button)view.findViewById(R.id.nameRecent3);
         Gson gson = new Gson();
         SharedPreferences prefs = this.getActivity().getSharedPreferences("RECENTLY", Context.MODE_PRIVATE);
         String json =  prefs.getString("DATARECENTLY",null);
 
         Type type = new TypeToken<Vector<Book>>(){}.getType();
         book = gson.fromJson(json,type);
-            if(book.size() >= 2){
-                one.setText(book.get(book.size()-1).getName());
-            }else if(book.size() >=3){
-                two.setText(book.get(book.size()-2).getName());
-            }else if(book.size() >=4) {
-                three.setText(book.get(book.size() - 3).getName());
-            }else if(book.size()<2){
+        if(book!=null){
+
+            if(book.size() == 1){
+                one.setText(book.get(0).getName());
+                one.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        getInfoBook(book.get(0).getImage_url(),book.get(0).getName(),book.get(0).getIsi(),view);
+                    }
+                });
+            }else if(book.size() ==2){
+                one.setText(book.get(1).getName());
+                one.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        getInfoBook(book.get(1).getImage_url(),book.get(1).getName(),book.get(1).getIsi(),view);
+                    }
+                });
+                two.setText(book.get(0).getName());
+                two.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        getInfoBook(book.get(0).getImage_url(),book.get(0).getName(),book.get(0).getIsi(),view);
+                    }
+                });
+            }else if(book.size() ==3) {
+                one.setText(book.get(2).getName());
+                one.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        getInfoBook(book.get(2).getImage_url(),book.get(2).getName(),book.get(2).getIsi(),view);
+                    }
+                });
+                two.setText(book.get(1).getName());
+                two.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        getInfoBook(book.get(1).getImage_url(),book.get(1).getName(),book.get(1).getIsi(),view);
+                    }
+                });
+                three.setText(book.get(0).getName());
+                three.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        getInfoBook(book.get(0).getImage_url(),book.get(0).getName(),book.get(0).getIsi(),view);
+                    }
+                });
+            }else if(book.size()<1){
                 one.setText("No Data");
             }
+
+        }
+
 
 
 
 
         return view;
+    }
+
+    public void getInfoBook(String image_url,String name,String isi,View view){
+        Intent i = new Intent(view.getContext(),BookDetailActivity.class);
+        i.putExtra("image_url",image_url);
+        i.putExtra("name",name);
+        i.putExtra("isi",isi);
+        view.getContext().startActivity(i);
+        System.out.println("startdetail");
     }
 }

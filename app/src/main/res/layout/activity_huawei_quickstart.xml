@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
+    android:background="@drawable/background_gradient"
     android:orientation="vertical">
 
     <!--id开发者可自定义-->
@@ -27,6 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Login"
+
             android:paddingTop="20dp"
             android:textSize="30dp"
             android:layout_gravity="center"
@@ -51,8 +53,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="Don't have an account? Sign In here"
-            android:textColorHighlight="#f00"
-            android:textColorLink="#f00"
+            android:textColorHighlight="#66a6ff"
+            android:textColorLink="#66a6ff"
             android:id="@+id/signIn"
             />
 
@@ -66,6 +68,7 @@
             android:text="Log in"
             android:textAllCaps="false"
             android:textColor="#fff"
+
             android:textSize="15dp" />
 
     </LinearLayout>
@@ -78,23 +81,23 @@
         android:layout_marginTop="15dp"
         android:layout_gravity="center_horizontal"/>
 
-    <Button
-        android:id="@+id/HuaweiIdSignOutButton"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
-        android:textColor="@color/white"
-        android:layout_marginTop="15dp"
-        android:layout_gravity="center_horizontal"
-        android:text="sign_out"/>
+<!--    <Button-->
+<!--        android:id="@+id/HuaweiIdSignOutButton"-->
+<!--        android:layout_width="200dp"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:layout_marginTop="15dp"-->
+<!--        android:layout_gravity="center_horizontal"-->
+<!--        android:text="sign_out"/>-->
 
-    <Button
-        android:id="@+id/HuaweiIdCancelAuthButton"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
-        android:textColor="@color/white"
-        android:layout_marginTop="15dp"
-        android:layout_gravity="center_horizontal"
-        android:text="cancel_authorization"/>
+<!--    <Button-->
+<!--        android:id="@+id/HuaweiIdCancelAuthButton"-->
+<!--        android:layout_width="200dp"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:layout_marginTop="15dp"-->
+<!--        android:layout_gravity="center_horizontal"-->
+<!--        android:text="cancel_authorization"/>-->
 
 <!--    <EditText-->
 <!--        android:id="@+id/LogText"-->
