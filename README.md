@@ -8,12 +8,23 @@ Aplikasi ini berguna untuk menarik niat membaca bagi anak-anak terutama dalam ce
 Fitur:
 
 -Login dan register dengan validasi
-![alt text](https://github.com/Muladi-Prog/MobileProgamming_Apk/blob/main/pic/Home.jpeg?raw=true)
+![alt text](https://github.com/Muladi-Prog/MobileProgamming_Apk/blob/main/pic/login.jpeg?raw=true)
+
+![alt text](https://github.com/Muladi-Prog/MobileProgamming_Apk/blob/main/pic/sign_in.jpeg?raw=true)
+
 -Showing Favourite Book
+![alt text](https://github.com/Muladi-Prog/MobileProgamming_Apk/blob/main/pic/favourite.jpeg?raw=true)
 
 -Showing Book based on genre
+![alt text](https://github.com/Muladi-Prog/MobileProgamming_Apk/blob/main/pic/Category.jpeg?raw=true)
 
 -Showing recently book that openend
+![alt text](https://github.com/Muladi-Prog/MobileProgamming_Apk/blob/main/pic/recently.jpeg?raw=true)
+
+-Home
+![alt text](https://github.com/Muladi-Prog/MobileProgamming_Apk/blob/main/pic/Home.jpeg?raw=true)
 
 
+-Navdrawer
+![alt text](https://github.com/Muladi-Prog/MobileProgamming_Apk/blob/main/pic/navdrawer.jpeg?raw=true)
 
