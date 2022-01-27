@@ -8,7 +8,7 @@ Aplikasi ini berguna untuk menarik niat membaca bagi anak-anak terutama dalam ce
 Fitur:
 
 -Login dan register dengan validasi
-
+![alt text](https://github.com/Muladi-Prog/MobileProgamming_Apk/blob/main/pic/Home.jpg?raw=true)
 -Showing Favourite Book
 
 -Showing Book based on genre
